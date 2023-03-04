@@ -1,0 +1,50 @@
+[
+  {
+    "id": "personal-website-codestus",
+    "title": "Personal Website Codestus.com",
+    "description": "Sharing knowledge of programming",
+    "tags": ["Website"],
+    "to": "https://codestus.com",
+    "isInternalLink": false
+  },
+  {
+    "id": "pure-css-bedroom-3d",
+    "title": "PureCSS Bedroom 3D",
+    "description": "I used my knowledge of CSS Transform 3D to create a bedroom using code",
+    "tags": ["Codepen"],
+    "to": "https://codepen.io/CodeEN/full/gOzByzm",
+    "isInternalLink": false
+  },
+  {
+    "id": "pure-css-macbook-3d",
+    "title": "PureCSS Macbook 3D Interaction",
+    "description": "I used my knowledge of CSS Transform 3D to create a macbook laptop using code",
+    "tags": ["Codepen"],
+    "to": "https://codepen.io/CodeEN/full/vYpYRbZ",
+    "isInternalLink": false
+  },
+  {
+    "id": "portfolio-2022",
+    "title": "Portfolio 2022",
+    "description": "A portfolio to show summary about me, experiences and skills",
+    "tags": ["Website"],
+    "to": "https://lucaa.vercel.app/",
+    "isInternalLink": false
+  },
+  {
+    "id": "casio-anhkhue",
+    "title": "Casio Watches E-Commerce website",
+    "description": "An outsourced project that involved Laravel",
+    "tags": ["Website"],
+    "to": "https://casio.anhkhue.com",
+    "isInternalLink": false
+  },
+  {
+    "id": "hatangdothi",
+    "title": "Ha Tang Do Thi Website",
+    "description": "An outsourced project for Ha Tang Do Thi Corporation",
+    "tags": ["Website"],
+    "to": "https://hatangdothi.vn",
+    "isInternalLink": false
+  }
+]
