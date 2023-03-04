@@ -1,6 +1,6 @@
-# Welcome to Remix!
+# SamIsland portfolio
 
-- [Remix Docs](https://remix.run/docs)
+![](/app/assets/docs/project-sample.png)
 
 ## Development
 
