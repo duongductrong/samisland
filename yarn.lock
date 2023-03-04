@@ -996,6 +996,13 @@
     "@babel/helper-validator-identifier" "^7.19.1"
     to-fast-properties "^2.0.0"
 
+"@balavishnuvj/remix-seo@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@balavishnuvj/remix-seo/-/remix-seo-1.0.2.tgz#0e2a6dc82509b6801f046ad15c0d455b3294e9d2"
+  integrity sha512-uSG0bc8ex0wj+RSO/hhtI/9BK7WlopYtIyrCR9A5GtwPyodNelR2ZRKg1PmyfSEndVgPIUFvpmCKT8GLZQbrYw==
+  dependencies:
+    lodash "^4.17.21"
+
 "@emotion/hash@^0.9.0":
   version "0.9.0"
   resolved "https://registry.yarnpkg.com/@emotion/hash/-/hash-0.9.0.tgz#c5153d50401ee3c027a57a177bc269b16d889cb7"

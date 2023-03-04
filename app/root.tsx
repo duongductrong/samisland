@@ -1,4 +1,8 @@
-import type { LinksFunction, MetaFunction } from "@remix-run/node";
+import type {
+  LinksFunction,
+  LoaderFunction,
+  MetaFunction,
+} from "@remix-run/node";
 import {
   Links,
   LiveReload,
@@ -6,9 +10,15 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
 } from "@remix-run/react";
 
 import tailwindStyle from "~/styles/tailwind.css";
+import MetaTags from "./components/SEO/MetaTags";
+
+export interface RootLoaderData {
+  host: string;
+}
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
@@ -37,10 +47,21 @@ export const links: LinksFunction = () => [
   },
 ];
 
+export const loader: LoaderFunction = ({ request }) => {
+  const url = new URL(request.url);
+
+  return {
+    host: url.host,
+  };
+};
+
 export default function App() {
+  const { host } = useLoaderData<RootLoaderData>();
+
   return (
     <html lang="en">
       <head>
+        <MetaTags host={host} />
         <Meta />
         <Links />
       </head>
