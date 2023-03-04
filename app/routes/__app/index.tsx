@@ -3,7 +3,7 @@ import { throttle } from "lodash";
 import { useEffect, useRef } from "react";
 import ProjectCard from "~/components/ProjectCard/ProjectCard";
 import ShowcaseCard from "~/components/ShowcaseCard/ShowcaseCard";
-import libraries from "~/mocks/projects.json";
+import openSources from "~/mocks/open-sources.json";
 import showcases from "~/mocks/showcases.json";
 import type { AppContextProps } from "../__app";
 
@@ -42,13 +42,13 @@ const Index = (props: AppIndexProps) => {
   }, [librarySectionRef.current, showCaseSectionRef.current]);
 
   return (
-    <div className="p-0 sm:p-4 md:p-8 lg:p-12 overflow-hidden">
+    <div className="p-0 sm:p-4 md:p-8 lg:p-12 !pt-0 overflow-hidden">
       <div
         ref={librarySectionRef}
         id="libraries"
-        className="flex flex-col gap-2 mb-24"
+        className="flex flex-col gap-2 pt-0 sm:pt-4 md:pt-8 lg:pt-12"
       >
-        {libraries.map(
+        {openSources.map(
           ({ description, key, tag, title, to, isInternalLink }) => (
             <ProjectCard
               key={key}
@@ -65,7 +65,7 @@ const Index = (props: AppIndexProps) => {
       <div
         ref={showCaseSectionRef}
         id="showcases"
-        className="grid grid-cols-1 lg:grid-cols-2 gap-2"
+        className="grid grid-cols-1 lg:grid-cols-2 gap-2 pt-20"
       >
         {showcases.map((showcase) => (
           <ShowcaseCard
