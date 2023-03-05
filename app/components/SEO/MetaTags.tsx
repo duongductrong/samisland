@@ -13,8 +13,6 @@ const MetaTags: FC<MetaTagsProps> = ({ host }) => {
   const matches = useMatches();
   const location = useLocation();
   const currentUrl = location.pathname + location.search;
-  // const rootMatcher = matches.find((matcher) => matcher.id === rootMatch);
-  // const rootLoader = rootMatcher?.data;
 
   const defaultMetaTags: { [x: string]: any } = {
     url: `${host}${currentUrl}`,
@@ -105,7 +103,7 @@ const MetaTags: FC<MetaTagsProps> = ({ host }) => {
 };
 
 MetaTags.defaultProps = {
-  rootMatch: "",
+  host: "",
 };
 
 export default MetaTags;
