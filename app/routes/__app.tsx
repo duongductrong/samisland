@@ -5,7 +5,7 @@ import { Activity, GitHub, Linkedin } from "react-feather";
 import LinkIcon from "~/components/Icons/LinkIcon";
 import StoolPigeon from "~/components/StoolPigeon/StoolPigeon";
 
-export type StoolPigeonType = "libraries" | "showcases";
+export type StoolPigeonType = "libraries" | "showcases" | "blogs";
 
 export interface AppContextProps {
   setStoolPigeon: React.Dispatch<React.SetStateAction<StoolPigeonType | null>>;
@@ -68,6 +68,12 @@ const Index = () => {
             text="Show cases"
             to="#showcases"
             active={stoolPigeon === "showcases"}
+          />
+          <StoolPigeon
+            prefix="03"
+            text="Articles"
+            to="#blogs"
+            active={stoolPigeon === "blogs"}
           />
         </div>
 

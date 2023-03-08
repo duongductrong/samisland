@@ -1,33 +1,65 @@
-import { useOutletContext } from "@remix-run/react";
+import type { LoaderFunction } from "@remix-run/node";
+import { json } from "@remix-run/node";
+import { useLoaderData, useOutletContext } from "@remix-run/react";
+import clsx from "clsx";
+import dayjs from "dayjs";
 import { throttle } from "lodash";
 import { useEffect, useRef } from "react";
+import { Bookmark, Eye, Star } from "react-feather";
 import ProjectCard from "~/components/ProjectCard/ProjectCard";
 import ShowcaseCard from "~/components/ShowcaseCard/ShowcaseCard";
+import type { Post } from "~/libs/types/post";
 import openSources from "~/mocks/open-sources.json";
 import showcases from "~/mocks/showcases.json";
 import type { AppContextProps } from "../__app";
 
 export interface AppIndexProps {}
 
+export interface AppIndexLoaderData {
+  posts: Post[];
+}
+
+export async function fetchPosts(): Promise<Post[]> {
+  const response = await fetch(
+    "https://api.codestus.com/api/v1/posts?sortableBy=views&orderBy=desc&rowsPerPage=6"
+  ).then((res) => res.json());
+
+  return response.data.posts.data;
+}
+
+export const loader: LoaderFunction = async () => {
+  const data = await fetchPosts();
+
+  return json({ posts: data });
+};
+
 const Index = (props: AppIndexProps) => {
+  const { posts } = useLoaderData<AppIndexLoaderData>();
   const { setStoolPigeon } = useOutletContext<AppContextProps>();
   const librarySectionRef = useRef<HTMLDivElement>(null);
   const showCaseSectionRef = useRef<HTMLDivElement>(null);
+  const articleSectionRef = useRef<HTMLDivElement>(null);
 
   const onThrottleScrolling = throttle(() => {
     const libraryRect = librarySectionRef.current?.getBoundingClientRect();
     const showCaseRect = showCaseSectionRef.current?.getBoundingClientRect();
+    const articleRect = articleSectionRef.current?.getBoundingClientRect();
 
     const offsetLibrary =
       Number(libraryRect?.top) + Number(libraryRect?.height);
 
     const offsetShowcase =
-      Number(showCaseRect?.top) + Number(libraryRect?.height);
+      Number(showCaseRect?.top) + Number(showCaseRect?.height);
+
+    const offsetArticle =
+      Number(articleRect?.top) + Number(articleRect?.height);
 
     if (offsetLibrary > 0) {
       setStoolPigeon("libraries");
     } else if (offsetShowcase > 0) {
       setStoolPigeon("showcases");
+    } else if (offsetArticle > 0) {
+      setStoolPigeon("blogs");
     }
   }, 20);
 
@@ -78,6 +110,49 @@ const Index = (props: AppIndexProps) => {
             className="lg:even:transform lg:even:translate-y-6"
             visitText="Link"
           />
+        ))}
+      </div>
+
+      <div id="blogs" ref={articleSectionRef} className="pt-20 pb-10">
+        {posts.map((post) => (
+          <div
+            key={post.postId}
+            className={clsx(
+              "relative",
+              "pb-10 last:pb-0 transform hover:scale-105 transition-transform duration-200 ease-out",
+              "hover:shadow-[0_0_0_1000px_rgba(21,21,21,0.5)]",
+              "z-10 hover:z-[11]"
+            )}
+          >
+            <a
+              className="flex items-center gap-6"
+              href={`https://codestus.com/posts/${post.slug}`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <div className="min-w-[100px] h-[100px] rounded-full bg-semantic-dark100 flex items-center justify-center">
+                <Bookmark className="w-6 h-6" />
+              </div>
+              <div>
+                <h2 className="font-bold text-2xl tracking-wide mt-2 mb-4">
+                  {post.title}
+                </h2>
+                <p className="text-semantic-gray text-sm mt-2 mb-4 line-clamp-1">
+                  {post.description}
+                </p>
+
+                <div className="flex flex-wrap gap-4">
+                  <span className="text-xs text-semantic-light font-semibold uppercase">
+                    {dayjs(post.updated_at).format("MMM D, YYYY")}
+                  </span>
+                  <span className="text-xs text-semantic-gray inline-flex items-center gap-2">
+                    <Star className="w-3 h-3" />
+                    {Intl.NumberFormat().format(post.views)} views
+                  </span>
+                </div>
+              </div>
+            </a>
+          </div>
         ))}
       </div>
     </div>
