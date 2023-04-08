@@ -96,7 +96,11 @@ const Index = () => {
             Icon={Linkedin}
           />
 
-          <SocialLink to="/assets/resume.pdf" text="Resume" Icon={Activity} />
+          <SocialLink
+            to="/assets/Duong Duc Trong - Software Engineer.pdf"
+            text="Resume"
+            Icon={Activity}
+          />
         </div>
       </aside>
 
