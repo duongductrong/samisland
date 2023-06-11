@@ -11,7 +11,7 @@ import ShowcaseCard from "~/components/ShowcaseCard/ShowcaseCard";
 import type { Post } from "~/libs/types/post";
 import openSources from "~/mocks/open-sources.json";
 import showcases from "~/mocks/showcases.json";
-import type { AppContextProps } from "../__app";
+import type { AppContextProps } from "../_app";
 
 export interface AppIndexProps {}
 

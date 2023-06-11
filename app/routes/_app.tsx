@@ -41,8 +41,8 @@ const Index = () => {
   return (
     <section className="flex max-w-[1280px] flex-col md:flex-row mx-auto pt-24 md:gap-10 lg:gap-20 px-6">
       <aside className="flex flex-col max-w-full md:max-w-[440px] h-full md:h-[calc(100vh-88px-88px)] static md:sticky top-[100px] left-0">
-        <h1 className="text-semantic-light text-7xl mb-4 font-bold">
-          Sam <sub className="text-sm">Trong Duong</sub>
+        <h1 className="text-semantic-light text-6xl mb-4 font-bold">
+          Trong Duong
         </h1>
         <h2 className="text-2xl text-semantic-light mb-8 font-semibold">
           Software Engineer at WhammyTech
@@ -52,8 +52,8 @@ const Index = () => {
           using modern web technologies
         </p>
         <p className="text-sm text-semantic-gray mb-14 leading-7">
-          Skilled in: React, Typescript, and Problem Solving. Familiar with
-          Jira, Agile.
+          Skilled in: React, Typescript, Remix.run, Next.js. Familiar with Jira,
+          Agile.
         </p>
 
         <div className="flex flex-col gap-y-8">
@@ -71,7 +71,7 @@ const Index = () => {
           />
           <StoolPigeon
             prefix="03"
-            text="Articles"
+            text="Blogs"
             to="#blogs"
             active={stoolPigeon === "blogs"}
           />
